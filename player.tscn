@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqk4jmxisnrik"]
+
+[ext_resource type="Texture2D" uid="uid://c03ra7juwpw30" path="res://images/player.png" id="1_8wkt4"]
+[ext_resource type="Script" path="res://Player.cs" id="2_vtwuj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ag3st"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8wkt4")
+}],
+"loop": true,
+"name": &"player",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lvwck"]
+radius = 78.0064
+
+[node name="Player" type="Area2D"]
+script = ExtResource("2_vtwuj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(19, 0)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ag3st")
+animation = &"player"
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 0)
+shape = SubResource("CircleShape2D_lvwck")
+
+[node name="Weapon" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Weapon"]
