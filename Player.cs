@@ -5,9 +5,11 @@ public partial class Player : Area2D
 {
 	[Export]
     public int Speed { get; set; } = 400;
+
+	private bool readyToFire { get; set; } = true;
 	// public Vector2 ScreenSize;
 
-	[Export]
+	// [Export]
     // public float RotationSpeed { get; set; } = 1.5f;
 
 	private int _rotationDirection;
@@ -22,6 +24,12 @@ public partial class Player : Area2D
         Vector2 inputDirection = Input.GetVector("left", "right", "up", "down");
 		// getVector is normalised
         _velocity = inputDirection * Speed;
+
+		if (Input.IsActionPressed("fire_projectile") && readyToFire) {
+			GD.Print("Hello");
+			readyToFire = false;
+			startFiringCooldown();
+		}
     }
 
 	// Called when the node enters the scene tree for the first time.
@@ -43,7 +51,6 @@ public partial class Player : Area2D
 		LookAt(GetGlobalMousePosition());
 	}
 
-	
 	public void handleMouseClick() {
 		// var myProjectile = GD.Load("res://projectile.tscn").GetScript();
 		// projectileScript = GetNode<ScriptName>("Projectile.cs");
@@ -53,8 +60,15 @@ public partial class Player : Area2D
 		// Console.WriteLine(projectile);
 		// GetNode<Node2D>("Weapon").AddChild(myProjectile);
 		var playerVariables = GetNode<Global>("/root/PlayerVariables");
-		var test = playerVariables.testing;
+		var test = playerVariables.testing.ToString();
 		GD.Print(test);
+	}
+
+	public async void startFiringCooldown() {
+		GD.Print("Timer starting");
+		await ToSignal(GetTree().CreateTimer(3.0), "timeout");
+		GD.Print("Timer ended!");
+		readyToFire = true;
 	}
 
 }
