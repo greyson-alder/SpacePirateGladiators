@@ -26,9 +26,7 @@ public partial class Player : Area2D
         _velocity = inputDirection * Speed;
 
 		if (Input.IsActionPressed("fire_projectile") && readyToFire) {
-			GD.Print("Hello");
-			readyToFire = false;
-			startFiringCooldown();
+			fireProjectile();
 		}
     }
 
@@ -36,6 +34,7 @@ public partial class Player : Area2D
 	public override void _Ready()
 	{
 		handleMouseClick();
+		ProjectileScene = GD.Load<PackedScene>("res://projectile.tscn");
 		// ScreenSize = GetViewportRect().Size;
 	}
 
@@ -69,6 +68,20 @@ public partial class Player : Area2D
 		await ToSignal(GetTree().CreateTimer(3.0), "timeout");
 		GD.Print("Timer ended!");
 		readyToFire = true;
+	}
+
+	private void fireProjectile() {
+		GD.Print("Hello");
+		readyToFire = false;
+		startFiringCooldown();
+
+		Projectile projectile = ProjectileScene.Instantiate<Projectile>();
+		projectile.init((new Vector2((float)Math.Cos(Rotation),(float)Math.Sin(Rotation))), Element.Neutral, 1);
+		projectile.Position = Position;
+
+		GetTree().Root.GetNode("Main").AddChild(projectile);
+
+		GD.Print(RotationDegrees);
 	}
 
 }
