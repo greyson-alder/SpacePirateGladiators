@@ -1,5 +1,4 @@
-using Godot;
-using System;
+namespace SpacePirateGladiators;
 
 public partial class Player : Area2D
 {

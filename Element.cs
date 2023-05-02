@@ -1,3 +1,5 @@
+namespace SpacePirateGladiators;
+
 public enum Element {
     Neutral,
     Fire,

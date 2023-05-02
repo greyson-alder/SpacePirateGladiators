@@ -1,5 +1,7 @@
-using Godot;
-using System;
+global using Godot;
+global using System;
+
+namespace SpacePirateGladiators;
 
 public partial class Global : Node
 {

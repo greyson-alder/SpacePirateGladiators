@@ -1,5 +1,4 @@
-using Godot;
-using System;
+namespace SpacePirateGladiators;
 
 public partial class Projectile : Area2D
 {
@@ -29,18 +28,12 @@ public partial class Projectile : Area2D
 		GD.Print(Position.ToString());
 	}
 
-	public override string ToString() {
-		return $@"
-			Heading Direction: {_direction.ToString()}, 
-			Element: {_element.ToString()}, 
-			Damage: {_damage.ToString()}
+	public override string ToString() =>
+		$@"
+			Heading Direction: {_direction}, 
+			Element: {_element}, 
+			Damage: {_damage}
 		";
-	}
 
-	private void OnNoLongerVisible() {
-		QueueFree();
-	}
-
-
+	private void OnNoLongerVisible() => QueueFree();
 }
-
