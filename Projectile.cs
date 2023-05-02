@@ -26,7 +26,7 @@ public partial class Projectile : Area2D
 	public override void _Process(double delta)
 	{
 		Position += Speed * _direction * (float)delta;
-		GD.Print(Position.ToString());
+		// GD.Print(Position.ToString());
 	}
 
 	public override string ToString() {

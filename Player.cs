@@ -76,12 +76,20 @@ public partial class Player : Area2D
 		startFiringCooldown();
 
 		Projectile projectile = ProjectileScene.Instantiate<Projectile>();
-		projectile.init((new Vector2((float)Math.Cos(Rotation),(float)Math.Sin(Rotation))), Element.Neutral, 1);
-		projectile.Position = Position;
+		projectile.init(
+			(
+				new Vector2((float)Math.Cos(Rotation),
+				(float)Math.Sin(Rotation))), 
+				Element.Neutral, 
+				1
+			);
+
+		projectile.Position = new Vector2(
+			x: this.Position.X + (float)Math.Cos(Rotation) * 100,
+			y: this.Position.Y + (float)Math.Sin(Rotation) * 100
+		);
 
 		GetTree().Root.GetNode("Main").AddChild(projectile);
-
-		GD.Print(RotationDegrees);
 	}
 
 }

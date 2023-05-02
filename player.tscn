@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqk4jmxisnrik"]
+[gd_scene load_steps=6 format=3 uid="uid://bqk4jmxisnrik"]
 
 [ext_resource type="Texture2D" uid="uid://c03ra7juwpw30" path="res://images/player.png" id="1_8wkt4"]
 [ext_resource type="Script" path="res://Player.cs" id="2_vtwuj"]
+[ext_resource type="Texture2D" uid="uid://23ydy64v8vpf" path="res://images/Weapon.png" id="3_tsb88"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ag3st"]
 animations = [{
@@ -32,5 +33,9 @@ position = Vector2(4, 0)
 shape = SubResource("CircleShape2D_lvwck")
 
 [node name="Weapon" type="Node2D" parent="."]
+position = Vector2(100, 0)
+rotation = 1.5708
 
 [node name="Sprite2D" type="Sprite2D" parent="Weapon"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_tsb88")
