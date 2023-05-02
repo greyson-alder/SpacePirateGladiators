@@ -89,6 +89,8 @@ public partial class Player : Area2D
 			y: this.Position.Y + (float)Math.Sin(Rotation) * 100
 		);
 
+		// projectile.Position = GetNode<Godot.Node2D>("Weapon").Position;
+
 		GetTree().Root.GetNode("Main").AddChild(projectile);
 	}
 
