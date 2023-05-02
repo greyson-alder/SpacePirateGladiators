@@ -1,5 +1,4 @@
-using Godot;
-using System;
+namespace SpacePirateGladiators;
 
 public partial class Node2D : Godot.Node2D
 {
