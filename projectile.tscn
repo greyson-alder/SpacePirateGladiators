@@ -18,4 +18,5 @@ shape = SubResource("CircleShape2D_tfs0f")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
+[connection signal="area_shape_exited" from="." to="." method="OnLeavingMainBattleground"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnNoLongerVisible"]

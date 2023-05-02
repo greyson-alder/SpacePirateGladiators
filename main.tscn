@@ -10,6 +10,7 @@ script = ExtResource("1_pojro")
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1624.0
 offset_bottom = 1624.0
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_ydjtk")]
 z_index = 1
