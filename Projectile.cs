@@ -37,7 +37,10 @@ public partial class Projectile : RigidBody2D
 		// GD.Print("Direction: ", _direction);
 		// GD.Print(delta);
 
-		MoveAndCollide(_direction * (float)(Speed*delta));
+		var collisionInformation = MoveAndCollide(_direction * (float)(Speed*delta));
+		if (collisionInformation != null) {
+			clearProjectile();
+		}
 
 		_lifetime -= 1;
 		

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Player : Area2D
+public partial class Player : CharacterBody2D
 {
 	[Export]
     public int Speed { get; set; } = 400;
@@ -14,7 +14,7 @@ public partial class Player : Area2D
 
 	private int _rotationDirection;
 
-	private Vector2 _velocity = Vector2.Zero;
+	// private Vector2 _velocity = Vector2.Zero;
 
 	[Export]
 	public PackedScene ProjectileScene { get; set; }
@@ -23,7 +23,7 @@ public partial class Player : Area2D
     {
         Vector2 inputDirection = Input.GetVector("left", "right", "up", "down");
 		// getVector is normalised
-        _velocity = inputDirection * Speed;
+        Velocity = inputDirection * Speed;
 
 		if (Input.IsActionPressed("fire_projectile") && readyToFire) {
 			fireProjectile();
@@ -41,12 +41,17 @@ public partial class Player : Area2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{	
+		
+	}
+
+	public override void _PhysicsProcess(double delta) {
 		GetInput();
-		Position += _velocity * (float)delta;
-		Position = new Vector2(
-			x: Position.X,
-			y: Position.Y
-		);
+		// Position += _velocity * (float)delta;
+		// Position = new Vector2(
+		// 	x: Position.X,
+		// 	y: Position.Y
+		// );
+		MoveAndSlide();
 		LookAt(GetGlobalMousePosition());
 	}
 
