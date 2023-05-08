@@ -1,41 +1,40 @@
 [gd_scene load_steps=6 format=3 uid="uid://bqk4jmxisnrik"]
 
-[ext_resource type="Texture2D" uid="uid://c03ra7juwpw30" path="res://images/player.png" id="1_8wkt4"]
+[ext_resource type="Texture2D" uid="uid://bp05asyl1mlrs" path="res://images/Characters.png" id="2_4qvjd"]
 [ext_resource type="Script" path="res://Player.cs" id="2_vtwuj"]
-[ext_resource type="Texture2D" uid="uid://23ydy64v8vpf" path="res://images/Weapon.png" id="3_tsb88"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3upl"]
+atlas = ExtResource("2_4qvjd")
+region = Rect2(0, 0, 16, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ag3st"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_8wkt4")
+"texture": SubResource("AtlasTexture_u3upl")
 }],
 "loop": true,
-"name": &"player",
+"name": &"Idle",
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lvwck"]
-radius = 78.0064
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4si7a"]
+radius = 3.0
+height = 8.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("2_vtwuj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(19, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ag3st")
-animation = &"player"
+animation = &"Idle"
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4, 0)
-shape = SubResource("CircleShape2D_lvwck")
+shape = SubResource("CapsuleShape2D_4si7a")
 
 [node name="Weapon" type="Node2D" parent="."]
 position = Vector2(100, 0)
 rotation = 1.5708
-
-[node name="Sprite2D" type="Sprite2D" parent="Weapon"]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("3_tsb88")

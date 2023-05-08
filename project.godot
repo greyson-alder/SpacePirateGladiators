@@ -20,6 +20,12 @@ config/icon="res://icon.svg"
 Global="*res://global.tscn"
 PlayerVariables="*res://Global.cs"
 
+[display]
+
+window/size/viewport_width=800
+window/size/viewport_height=800
+window/stretch/scale=4.0
+
 [dotnet]
 
 project/assembly_name="SPG"

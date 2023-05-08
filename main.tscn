@@ -1871,7 +1871,6 @@ script = ExtResource("1_pojro")
 [node name="Player" parent="." instance=ExtResource("2_ydjtk")]
 z_index = 1
 position = Vector2(582, 309)
-collision_layer = 2
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 position = Vector2(100, 100)

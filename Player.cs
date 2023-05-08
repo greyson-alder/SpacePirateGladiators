@@ -52,7 +52,7 @@ public partial class Player : CharacterBody2D
 		// 	y: Position.Y
 		// );
 		MoveAndSlide();
-		LookAt(GetGlobalMousePosition());
+		// LookAt(GetGlobalMousePosition());
 	}
 
 	public void handleMouseClick() {
