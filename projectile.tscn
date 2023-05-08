@@ -6,7 +6,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_tfs0f"]
 radius = 20.0
 
-[node name="Projectile" type="Area2D"]
+[node name="Projectile" type="RigidBody2D"]
+collision_layer = 4
+gravity_scale = 0.0
 script = ExtResource("1_vw28p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -18,5 +20,5 @@ shape = SubResource("CircleShape2D_tfs0f")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
-[connection signal="area_shape_exited" from="." to="." method="OnLeavingMainBattleground"]
+[connection signal="body_entered" from="." to="." method="OnCollision"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="OnNoLongerVisible"]
